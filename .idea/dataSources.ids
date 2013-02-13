@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Data Source" product="PostgreSQL" version="9.2.1" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.2 JDBC4 (build 1002)" uuid="85220e12-cdf2-4a00-b582-187083c4c941">
+    <identifier-quote-string>"</identifier-quote-string>
+    <synchronize>true</synchronize>
+    <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+    <jdbc-url>jdbc:postgresql://localhost/test</jdbc-url>
+    <user-name>postgres</user-name>
+    <user-password>dfdadfc5dfd9dfdedfcddfd8dfcfdfd9</user-password>
+    <schema-pattern>test.public</schema-pattern>
+    <default-schemas>test.public</default-schemas>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/Downloads/postgresql-9.2-1002.jdbc4.jar</url>
+      </library>
+    </libraries>
+    <schema name="public" catalog="test" />
+    <table name="appuser" schema="public" catalog="test" type="TABLE">
+      <column name="id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="user_login" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="user_pass" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="appuser_pkey" columns="id" />
+    </table>
+    <table name="auser" schema="public" catalog="test" type="TABLE">
+      <column name="id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="login" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="auser_pkey" columns="id" />
+      <exported-key name="fk1f27a2e4428dad" table="blog" schema="public" catalog="test" columns="user_id" />
+    </table>
+    <table name="author" schema="public" catalog="test" type="TABLE">
+      <column name="id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="date" sqlType="timestamp" length="29" precision="6" nullable="true" jdbcType="93" />
+      <column name="appname" sqlType="varchar" length="10" precision="0" nullable="true" jdbcType="12" />
+      <column name="sname" sqlType="varchar" length="10" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="author_pkey" columns="id" />
+    </table>
+    <table name="author_id_sequence" schema="public" catalog="test" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" length="2147483647" precision="0" nullable="false" jdbcType="12" />
+      <column name="last_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="start_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="increment_by" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="max_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="min_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="cache_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="log_cnt" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="is_cycled" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+      <column name="is_called" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+    </table>
+    <table name="blog" schema="public" catalog="test" type="TABLE">
+      <column name="id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="context" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="title" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="user_id" sqlType="int8" length="19" precision="0" nullable="true" jdbcType="-5" />
+      <primary-key name="blog_pkey" columns="id" />
+      <foreign-key name="fk1f27a2e4428dad" columns="user_id" ref-table="auser" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2" />
+      <exported-key name="fke2143296ebb96a4d" table="blog_tags" schema="public" catalog="test" columns="blog_id" />
+    </table>
+    <table name="blog_id_sequence" schema="public" catalog="test" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" length="2147483647" precision="0" nullable="false" jdbcType="12" />
+      <column name="last_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="start_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="increment_by" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="max_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="min_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="cache_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="log_cnt" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="is_cycled" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+      <column name="is_called" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+    </table>
+    <table name="blog_tags" schema="public" catalog="test" type="TABLE">
+      <column name="blog_id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="tagslist_id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <foreign-key name="fke2143296ebb96a4d" columns="blog_id" ref-table="blog" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2" />
+    </table>
+    <table name="blogentry" schema="public" catalog="test" type="TABLE">
+      <column name="id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="context" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="title" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="blogentry_pkey" columns="id" />
+      <exported-key name="fk5edbbd08c9320f48" table="blogentry_tags" schema="public" catalog="test" columns="blogentrylist_id" />
+    </table>
+    <table name="blogentry_id_sequence" schema="public" catalog="test" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" length="2147483647" precision="0" nullable="false" jdbcType="12" />
+      <column name="last_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="start_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="increment_by" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="max_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="min_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="cache_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="log_cnt" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="is_cycled" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+      <column name="is_called" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+    </table>
+    <table name="blogentry_tags" schema="public" catalog="test" type="TABLE">
+      <column name="blogentrylist_id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="tagslist_id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <foreign-key name="fk5edbbd08c9320f48" columns="blogentrylist_id" ref-table="blogentry" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2" />
+      <foreign-key name="fk5edbbd08427b21b0" columns="tagslist_id" ref-table="tags" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2" />
+    </table>
+    <table name="category" schema="public" catalog="test" type="TABLE">
+      <column name="id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="name" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="parent_id" sqlType="int8" length="19" precision="0" nullable="true" jdbcType="-5" />
+      <primary-key name="category_pkey" columns="id" />
+      <foreign-key name="fk31a8acfeedbef60a" columns="parent_id" ref-table="category" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2" />
+      <exported-key name="fk31a8acfeedbef60a" table="category" schema="public" catalog="test" columns="parent_id" />
+    </table>
+    <table name="employee" schema="public" catalog="test" type="TABLE">
+      <column name="employee_id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="cell_phone" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="firstname" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="employee_pkey" columns="employee_id" />
+    </table>
+    <table name="employeedetail" schema="public" catalog="test" type="TABLE">
+      <column name="employee_id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="city" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="street" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="employeedetail_pkey" columns="employee_id" />
+    </table>
+    <table name="groups" schema="public" catalog="test" type="TABLE">
+      <column name="id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <primary-key name="groups_pkey" columns="id" />
+      <exported-key name="fkf71b400b3ff00f29" table="users_groups" schema="public" catalog="test" columns="groups_id" />
+    </table>
+    <table name="groups_id_sequence" schema="public" catalog="test" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" length="2147483647" precision="0" nullable="false" jdbcType="12" />
+      <column name="last_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="start_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="increment_by" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="max_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="min_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="cache_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="log_cnt" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="is_cycled" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+      <column name="is_called" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+    </table>
+    <table name="hibernate_sequence" schema="public" catalog="test" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" length="2147483647" precision="0" nullable="false" jdbcType="12" />
+      <column name="last_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="start_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="increment_by" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="max_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="min_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="cache_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="log_cnt" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="is_cycled" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+      <column name="is_called" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+    </table>
+    <table name="invoice" schema="public" catalog="test" type="TABLE">
+      <column name="id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="name" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="invoice_pkey" columns="id" />
+      <exported-key name="fk329cf4f7ce0cd98b" table="invoice_invoice_item" schema="public" catalog="test" columns="invoice_id" />
+    </table>
+    <table name="invoice_invoice_item" schema="public" catalog="test" type="TABLE">
+      <column name="invoice_id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="lineitems_id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <foreign-key name="fk329cf4f7ce0cd98b" columns="invoice_id" ref-table="invoice" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2" />
+      <foreign-key name="fk329cf4f75557fe44" columns="lineitems_id" ref-table="invoice_item" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2" />
+      <index name="invoice_invoice_item_lineitems_id_key" unique="true" columns="lineitems_id" />
+    </table>
+    <table name="invoice_item" schema="public" catalog="test" type="TABLE">
+      <column name="id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="item_name" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="item_price" sqlType="numeric" length="19" precision="2" nullable="true" jdbcType="2" />
+      <primary-key name="invoice_item_pkey" columns="id" />
+      <exported-key name="fk329cf4f75557fe44" table="invoice_invoice_item" schema="public" catalog="test" columns="lineitems_id" />
+    </table>
+    <table name="student" schema="public" catalog="test" type="TABLE">
+      <column name="id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="city" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="street" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="name" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="city_office" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="street_office" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="student_pkey" columns="id" />
+      <exported-key name="fka4a8e838e26f841e" table="student_to_class" schema="public" catalog="test" columns="student_id" />
+    </table>
+    <table name="student_to_class" schema="public" catalog="test" type="TABLE">
+      <column name="student_id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="class_id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <foreign-key name="fka4a8e838e26f841e" columns="student_id" ref-table="student" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2" />
+      <foreign-key name="fka4a8e8388481c7e6" columns="class_id" ref-table="uniclass" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2" />
+    </table>
+    <table name="tags" schema="public" catalog="test" type="TABLE">
+      <column name="id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="content" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="tags_pkey" columns="id" />
+      <exported-key name="fk5edbbd08427b21b0" table="blogentry_tags" schema="public" catalog="test" columns="tagslist_id" />
+    </table>
+    <table name="tags_id_sequence" schema="public" catalog="test" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" length="2147483647" precision="0" nullable="false" jdbcType="12" />
+      <column name="last_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="start_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="increment_by" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="max_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="min_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="cache_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="log_cnt" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="is_cycled" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+      <column name="is_called" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+    </table>
+    <table name="uniclass" schema="public" catalog="test" type="TABLE">
+      <column name="id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="name" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="uniclass_pkey" columns="id" />
+      <exported-key name="fka4a8e8388481c7e6" table="student_to_class" schema="public" catalog="test" columns="class_id" />
+    </table>
+    <table name="user_id_sequence" schema="public" catalog="test" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" length="2147483647" precision="0" nullable="false" jdbcType="12" />
+      <column name="last_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="start_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="increment_by" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="max_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="min_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="cache_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="log_cnt" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="is_cycled" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+      <column name="is_called" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+    </table>
+    <table name="users" schema="public" catalog="test" type="TABLE">
+      <column name="id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="name" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="users_pkey" columns="id" />
+      <exported-key name="fkcb81863037b8c2a5" table="users_certifications" schema="public" catalog="test" columns="users_id" />
+    </table>
+    <table name="users_certifications" schema="public" catalog="test" type="TABLE">
+      <column name="users_id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="certifications" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <foreign-key name="fkcb81863037b8c2a5" columns="users_id" ref-table="users" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2" />
+    </table>
+    <table name="users_groups" schema="public" catalog="test" type="TABLE">
+      <column name="users_id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="groups_id" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <foreign-key name="fkf71b400b3ff00f29" columns="groups_id" ref-table="groups" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2" />
+    </table>
+    <table name="users_id_sequence" schema="public" catalog="test" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" length="2147483647" precision="0" nullable="false" jdbcType="12" />
+      <column name="last_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="start_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="increment_by" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="max_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="min_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="cache_value" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="log_cnt" sqlType="int8" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="is_cycled" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+      <column name="is_called" sqlType="bool" length="1" precision="0" nullable="false" jdbcType="-7" />
+    </table>
+  </data-source>
+</component>
